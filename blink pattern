@@ -1,0 +1,56 @@
+//Continuous forward direction blinking
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  for(int i=6;i<12;i++){
+  pinMode(i, OUTPUT);
+  }
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  for(int i=6;i<12;i++){
+  pinMode(i, OUTPUT);
+  digitalWrite(i, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(40);                      // wait for a second
+  digitalWrite(i, LOW);   // turn the LED off by making the voltage LOW
+  delay(40);                      // wait for a second
+}
+}
+
+
+//forward as well backard pattern
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  for(int i=6;i<12;i++){
+  pinMode(i, OUTPUT);
+  }
+}
+
+// the loop function runs over and over again forever
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  for(int i=6;i<12;i++){
+  pinMode(i, OUTPUT);
+  }
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  for(int i=6;i<12;i++){
+  pinMode(i, OUTPUT);
+  digitalWrite(i, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(40);                      // wait for a second
+  digitalWrite(i, LOW);   // turn the LED off by making the voltage LOW
+  delay(40);                  // wait for a second
+  for(int i=11;i>5;i--){
+  pinMode(i, OUTPUT); 
+  digitalWrite(i, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(40); 
+  digitalWrite(i, LOW);   // turn the LED off by making the voltage LOW
+  delay(40);                // wait for a second
+  }                  
+}
+}
