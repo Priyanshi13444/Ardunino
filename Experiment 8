@@ -1,0 +1,48 @@
+/*
+Experiment No.	:	08
+Statement		:	Turn ON/OFF five LEDs individually via serial monitor window.
+Author		:	Priyanshi Panwar 
+*/
+
+CODE:
+// Define LED pins
+const int ledPins[] = {2, 3, 4, 5, 6};
+const int numLeds = sizeof(ledPins) / sizeof(ledPins[0]);
+
+
+void setup() {
+  // Initialize LED pins as outputs
+  for (int i = 0; i < numLeds; i++) {
+    pinMode(ledPins[i], OUTPUT);
+  }
+
+
+  // Initialize serial communication
+  Serial.begin(9600);
+}
+
+
+void loop() {
+  if (Serial.available() > 0) {
+    // Read the incoming byte from the serial port
+    char receivedChar = Serial.read();
+
+
+    // Check if the received character is a digit between '1' and '5'
+    if (receivedChar >= '1' && receivedChar <= '5') {
+      // Convert the character to an integer
+      int ledIndex = receivedChar - '1';
+
+
+      // Toggle the corresponding LED
+      digitalWrite(ledPins[ledIndex],!digitalRead(ledPins[ledIndex]));
+
+
+      // Print the status of the LED
+      Serial.print("LED ");
+      Serial.print(ledIndex + 1);
+      Serial.print(": ");
+      Serial.println(digitalRead(ledPins[ledIndex]));
+    }
+  }
+}
