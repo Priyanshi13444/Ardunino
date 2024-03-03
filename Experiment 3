@@ -1,0 +1,73 @@
+/*
+Experiment No.	:	03
+Statement		:	Make a light intensity meter that represents light intensity on 5 LEDs, such that all LEDs would glow for maximum light, no LED would glow for dark condition, and likewise for in between light intensities.
+Author		:	Priyanshi Panwar
+*/
+CODE:
+
+const int LDRPin = A0;    // LDR connected to analog pin A0
+const int ledPin1 = 2;    // LED connected to digital pin 2
+const int ledPin2 = 3;    // LED connected to digital pin 3
+const int ledPin3 = 4;    // LED connected to digital pin 4
+const int ledPin4 = 5;    // LED connected to digital pin 5
+const int ledPin5 = 6;    // LED connected to digital pin 6
+
+void setup() {
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(ledPin3, OUTPUT);
+  pinMode(ledPin4, OUTPUT);
+  pinMode(ledPin5, OUTPUT);
+  Serial.begin(9600);     // Initialize serial communication for debugging
+}
+
+void loop() {
+  int lightIntensity = analogRead(LDRPin);    // Read analog value from LDR
+  int brightness = map(lightIntensity, 0, 1023, 0, 5); // Map the analog value to number of LEDs to light up
+  
+  // Turn off all LEDs
+  digitalWrite(ledPin1, LOW);
+  digitalWrite(ledPin2, LOW);
+  digitalWrite(ledPin3, LOW);
+  digitalWrite(ledPin4, LOW);
+  digitalWrite(ledPin5, LOW);
+  
+  // Turn on LEDs based on mapped brightness value
+  if (brightness >= 1) {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+    digitalWrite(ledPin4, HIGH);
+    digitalWrite(ledPin5, HIGH);
+  }
+  if (brightness >= 2) {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+    digitalWrite(ledPin4, HIGH);
+    digitalWrite(ledPin5, HIGH);
+  }
+  if (brightness >= 3) {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+     digitalWrite(ledPin4, HIGH);
+    digitalWrite(ledPin5, HIGH);
+  }
+  if (brightness >= 4) {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+    digitalWrite(ledPin4, HIGH);
+    digitalWrite(ledPin5, HIGH);
+  }
+  if (brightness >= 5) {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+     digitalWrite(ledPin4, HIGH);
+    digitalWrite(ledPin5, HIGH);
+  }
+
+  delay(50);   // Small delay to prevent rapid reading
+}
