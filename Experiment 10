@@ -1,0 +1,46 @@
+/*
+Experiment No.	:	10
+Statement		:	Blink an LED in accordance with the brightness. Blinking frequency increases with increase in brightness.
+Author		:	Priyanshi Panwar
+
+CODE:
+// Define the pin connected to the LDR
+int ldrpin = A0;
+// Define the pin connected to the LED
+int ledpin = 3;
+
+void setup() {
+  // Setup code that runs once when the Arduino starts
+  // Set the LDR pin as an input
+  pinMode(ldrpin, INPUT);
+  
+  // Set the LED pin as an output
+  pinMode(ledpin, OUTPUT);
+  
+  // Initialize serial communication at 9600 baud rate
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Main code that runs repeatedly
+  // Read the value from the LDR
+  int ldr_val = analogRead(ldrpin);
+  
+  // Map the LDR value to a delay time (for blinking)
+  int mapped_val = map(ldr_val, 0, 1023, 1000, 100);
+  
+  // Turn on the LED
+  digitalWrite(ledpin, HIGH);
+  
+  // Wait for the mapped delay time
+  delay(mapped_val);
+  
+  // Turn off the LED
+  digitalWrite(ledpin, LOW);
+  
+  // Wait for the mapped delay time
+  delay(mapped_val);
+
+  // Print the LDR value to the serial monitor
+  Serial.println(ldr_val);
+}
